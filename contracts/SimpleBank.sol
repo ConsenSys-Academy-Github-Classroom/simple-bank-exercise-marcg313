@@ -78,9 +78,16 @@ contract SimpleBank {
     }
 
  
+       /// @notice Deposit ether into bank
+    /// @return The balance of the user after the deposit is made
+    // Add the appropriate keyword so that this function can receive ether
+    // Use the appropriate global variables to get the transaction sender and value
+    function deposit() public payable returns (uint) {
+        /* Add the amount to the user's balance, call the event associated with a deposit,
+          then return the balance of the user */
         balances[msg.sender] += msg.value;
-        emit LogDepositMade(msg.sender, balances[msg.sender]);
-        return balances[msg.sender];
+        emit LogDepositMade(msg.sender, msg.value);
+        return balances[msg.sender];      
     }
 
 

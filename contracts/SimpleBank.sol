@@ -47,7 +47,7 @@ contract SimpleBank {
     /// @return The balance of the user after the deposit is made
     // Add the appropriate keyword so that this function can receive ether
     // Use the appropriate global variables to get the transaction sender and value
-    function deposit() public returns (uint) {
+    function deposit() public payable returns (uint) {
         /* Add the amount to the user's balance, call the event associated with a deposit,
           then return the balance of the user */
         balances[msg.sender] += msg.value;
@@ -74,7 +74,7 @@ contract SimpleBank {
     /// @return The balance of the user
     // A SPECIAL KEYWORD prevents function from editing state variables;
     // allows function to run locally/off blockchain
-    function balance() public returns (uint) {
+    function balance() public view returns (uint) {
         /* Get the balance of the sender of this transaction */
         return balances[msg.sender];
     }

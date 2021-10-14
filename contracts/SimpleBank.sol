@@ -28,11 +28,11 @@ contract SimpleBank {
     event LogDepositMade(address accountAddress, uint amount);
 
     /* Create an event called LogWithdrawal */
-    /* Add 3 arguments for this event, an accountAddress, withdrawalAmount and a newBalance */
-    event LogWithdrawal(address accountAddress, uint withdrawalAmount, uint newBalance);
+    /* Add 3 arguments for this event, an accountAddress, withdrawAmount and a newBalance */
+    event LogWithdrawal(address accountAddress, uint withdrawAmount, uint newBalance);
 
     /* Use the appropriate global variable to get the sender of the transaction */
-    constructor() {
+    public constructor() {
         /* Set the owner to the creator of this contract */
         owner = msg.sender;
     }
@@ -65,9 +65,9 @@ contract SimpleBank {
            Subtract the amount from the sender's balance, and try to send that amount of ether
            to the user attempting to withdraw. IF the send fails, add the amount back to the user's balance
            return the user's balance.*/
-        require(balances[msg.sender] >= withdrawalAmount);
-        balances[msg.sender] -= withdrawalAmount;
-        msg.sender.transfer(withdrawalAmount);
+        require(balances[msg.sender] >= withdrawaAmount);
+        balances[msg.sender] -= withdrawaAmount;
+        msg.sender.transfer(withdrawaAmount);
         return balances[msg.sender];
     }
 

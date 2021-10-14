@@ -31,8 +31,7 @@ contract SimpleBank {
     /* Add 3 arguments for this event, an accountAddress, withdrawAmount and a newBalance */
     event LogWithdrawal(address accountAddress, uint withdrawAmount, uint newBalance);
 
-    /* Use the appropriate global variable to get the sender of the transaction */
-    public constructor() {
+   constructor() public {
         /* Set the owner to the creator of this contract */
         owner = msg.sender;
     }
